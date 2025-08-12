@@ -1,0 +1,198 @@
+/* Font awesome icons */
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css);
+
+body {
+  background-color: #eef2f7; /* A soft blue-gray background for elegance */
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  font-family: "Roboto", Arial, sans-serif; /* Modern and clean font */
+}
+
+.payment-box {
+  /* Border settings */
+  border: 0.15rem solid #d0d7e3;
+  border-radius: 1.5rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+
+  /* Size settings */
+  min-height: 30rem;
+  max-width: 30rem;
+  padding: 2rem;
+
+  /* Content alignment */
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+  background-color: #ffffff; /* Distinct and clean contrast */
+}
+
+.payment-title {
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: #2c3e50; /* Deep blue for better readability */
+  margin-bottom: 1rem;
+}
+
+/* Lock Area */
+.lock-area {
+  /* Border settings */
+  border-bottom: 0.1rem solid #3498db;
+  box-shadow: inset 0 -0.5rem 1rem -1rem rgba(0, 0, 0, 0.05);
+
+  /* Alignment settings */
+  text-align: center;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.fa-lock,
+.fa-lock-open {
+  color: #3498db; /* Blue to match theme */
+  padding-right: 0.5rem;
+  font-size: 1.8rem;
+}
+
+@keyframes lock-anim {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Dropdown */
+.payment-dropdown {
+  /* Size settings */
+  width: 90%;
+  padding: 0.8rem;
+  border: 0.1rem solid #d0d7e3;
+  border-radius: 2rem;
+
+  /* Text settings */
+  font-size: 1rem;
+  color: #555;
+  background-color: #f9f9f9;
+
+  /* Transition for hover effect */
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
+.payment-dropdown:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* Buttons */
+.donate-btn {
+  /* Size settings */
+  width: 90%;
+  height: 3rem;
+  border: none;
+  border-radius: 2rem;
+  background-color: #3498db;
+  box-shadow: 0.1rem 0.1rem 1rem 0.1rem rgba(0, 0, 0, 0.1);
+
+  /* Text settings */
+  font-weight: 600;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 1rem;
+
+  /* Transition for hover effect */
+  transition: all 0.3s ease;
+}
+
+.donate-btn:hover {
+  background-color: #2a80b9;
+  box-shadow: 0.1rem 0.1rem 1rem 0.3rem rgba(0, 0, 0, 0.15);
+}
+
+.donate-btn:active {
+  background-color: #21618c;
+  box-shadow: 0.1rem 0.1rem 1rem 0.1rem rgba(0, 0, 0, 0.1);
+}
+
+/* Summary Section */
+.summary {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.summary .detail {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #666;
+}
+
+.summary .detail strong {
+  color: #2c3e50; /* Consistent deep blue */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .payment-box {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .payment-title {
+    font-size: 1.5rem;
+  }
+
+  .donate-btn,
+  .payment-dropdown {
+    width: 100%;
+  }
+}
+/* Dropdown */
+.payment-dropdown {
+  /* Size settings */
+  width: 90%;
+  padding: 0.8rem;
+  border: 0.1rem solid #d0d7e3;
+  border-radius: 2rem;
+
+  /* Text settings */
+  font-size: 1rem;
+  color: #555;
+  background-color: #f9f9f9;
+
+  /* Transition for hover effect */
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+  appearance: none; /* Hides the default dropdown arrow */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23AAA' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+}
+
+.payment-dropdown:hover,
+.payment-dropdown:focus {
+  border-color: #3498db;
+  outline: none;
+  background-color: #eef6fc; /* Slight hover effect */
+}
+
+/* Dropdown Options */
+.payment-dropdown option {
+  padding: 0.8rem;
+  font-size: 1rem;
+  color: #555;
+  background-color: #ffffff;
+}
+
+.payment-dropdown option:hover {
+  background-color: #eef6fc; /* Highlight hovered option */
+  color: #2c3e50;
+}
+
+.payment-dropdown option:checked {
+  background-color: #3498db; /* Highlight selected option */
+  color: #ffffff;
+}
+
+/* Ensure dropdown works across browsers */
+.payment-dropdown::-ms-expand {
+  display: none; /* Hide arrow for IE */
+}

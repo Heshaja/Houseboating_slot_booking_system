@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Feedback</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+            font-size: 2.5em;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        textarea, select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Feedback List Styling */
+        .feedback-item {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .feedback-item h5 {
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .feedback-item p {
+            font-style: italic;
+        }
+
+        .feedback-item .rating {
+            font-size: 1.2em;
+            color: #ff9800;
+        }
+
+        .feedback-item .date {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .feedback-item .comments {
+            font-size: 1.1em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Feedback Section Start -->
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1>Customer Reviews & Feedback</h1>
+            <p>We value your feedback! Please share your experience with us.</p>
+        </div>
+
+        <!-- Feedback Form -->
+        <form action="/feedback" method="POST">
+            <div class="form-group">
+                <label for="customer_id">Customer ID</label>
+                <input type="number" id="customer_id" name="customer_id" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="comments">Comments</label>
+                <textarea id="comments" name="comments" class="form-control" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <select id="rating" name="rating" class="form-control" required>
+                    <option value="1">1 - Poor</option>
+                    <option value="2">2 - Fair</option>
+                    <option value="3">3 - Good</option>
+                    <option value="4">4 - Very Good</option>
+                    <option value="5">5 - Excellent</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Feedback</button>
+        </form>
+
+        <div class="text-center mt-5">
+            <h2>Customer Feedback</h2>
+            <div id="feedback-list" class="row">
+                <!-- Feedback will be inserted here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Script to handle feedback rendering dynamically from a database or server
+        window.onload = function() {
+            // Sample data; this should be fetched dynamically from your backend (e.g., using fetch or AJAX)
+            const feedbackList = [
+                {
+                    customerName: "John Doe",
+                    date: "12/05/2024",
+                    comments: "Great experience, will definitely travel again!",
+                    rating: 4.8,
+                    feedbackCount: 120
+                },
+                {
+                    customerName: "Jane Smith",
+                    date: "15/05/2024",
+                    comments: "Wonderful service and beautiful locations. Highly recommended!",
+                    rating: 4.7,
+                    feedbackCount: 250
+                }
+            ];
+
+            // Render feedback items to the page
+            const feedbackContainer = document.getElementById('feedback-list');
+            feedbackList.forEach(feedback => {
+                const feedbackItem = document.createElement('div');
+                feedbackItem.classList.add('col-lg-4', 'col-md-6', 'mb-4');
+                feedbackItem.innerHTML = `
+                    <div class="feedback-item">
+                        <h5>${feedback.customerName}</h5>
+                        <p class="comments">${feedback.comments}</p>
+                        <div class="d-flex justify-content-between">
+                            <span class="rating">${feedback.rating} <i class="fa fa-star"></i> (${feedback.feedbackCount})</span>
+                            <span class="date">${feedback.date}</span>
+                        </div>
+                    </div>
+                `;
+                feedbackContainer.appendChild(feedbackItem);
+            });
+        };
+    </script>
+
+</body>
+</html>

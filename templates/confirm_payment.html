@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Payment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/confirm_payment.css') }}">
+</head>
+<body>
+    <h1>Confirm Your Payment</h1>
+    <p>Payment Method: {{ payment_method }}</p>
+    <form method="POST" action="/payment">
+        <input type="hidden" name="payment_method" value="{{ payment_method }}">
+
+        <!-- Confirm Payment Button -->
+        <button type="submit" name="action" value="confirm">Confirm</button>
+
+        <!-- Pay Later Button -->
+        <button type="submit" name="action" value="pay_later" style="background-color: #ffc107; color: #000;">Pay Later</button>
+
+        <!-- Cancel Link -->
+        <a href="/book">Cancel</a>
+    </form>
+</body>
+</html>

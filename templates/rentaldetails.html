@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rental_details.css') }}">
+</head>
+<body>
+    <div>
+        <h1>Enter Customer ID to View Rental Details</h1>
+        <form method="POST">
+            <label for="customer_id">Customer ID:</label>
+            <input type="text" id="customer_id" name="customer_id" required>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if rentals %}
+            {% if customer_name %}
+                <h2>Rental Details for Customer: {{ customer_name }}</h2>
+            {% else %}
+                <h2>Rental Details for Customer ID: {{ customer_id }} (No customer found)</h2>
+            {% endif %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rental ID</th>
+                        <th>Rental Date</th>
+                        <th>Return Date</th>
+                        <th>Payment Status</th> <!-- Payment Status column -->
+                        <th>Houseboat Name</th> <!-- Houseboat Name column -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rental in rentals %}
+                        <tr>
+                            <td>{{ rental.rental_id }}</td>
+                            <td>{{ rental.rental_date }}</td>
+                            <td>{{ rental.return_date }}</td>
+                            <td>{{ rental.payment_status if rental.payment_status else 'Not Available' }}</td>
+                            <td>{{ rental.houseboat_name if rental.houseboat_name else 'Not Available' }}</td> <!-- Display Houseboat Name -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No rental details found for Customer ID: {{ customer_id }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

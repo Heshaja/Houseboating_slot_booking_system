@@ -1,0 +1,49 @@
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pay.css') }}">
+</head>
+<body>
+    <div class="payment-box">
+        <div class="lock-area row">
+            <p class="payment-title"><i id="lock1" class="fa fa-lock"></i> Payment Details</p>
+        </div>
+
+        <h2 class="payment-title">Summary</h2>
+        
+        <!-- Summary Section -->
+        <div class="summary">
+            <div class="detail"><strong>Name:</strong> {{ user_details.name }}</div>
+            <div class="detail"><strong>Email:</strong> {{ user_details.email }}</div>
+            <div class="detail"><strong>Phone:</strong> {{ user_details.phone }}</div>
+            <div class="detail"><strong>Address:</strong> {{ user_details.address }}</div>
+            <div class="detail"><strong>Rental Date:</strong> {{ user_details.rental_date }}</div>
+            <div class="detail"><strong>Return Date:</strong> {{ user_details.return_date }}</div>
+            <div class="detail"><strong>Houseboat:</strong> {{ user_details.houseboat_id }}</div>
+            <div class="detail"><strong>Rental Amount:</strong> ${{ user_details.amount }}</div>
+        </div>
+
+       <!-- Payment Options -->
+<h2 class="payment-title">Choose Payment Method</h2>
+<select class="payment-dropdown" onchange="proceedToPayment(this.value)" onmouseover="openLock()" onmouseleave="closeLock()">
+    <option value="">Select a Payment Method</option>
+    <option value="Paypal">Paypal</option>
+    <option value="Credit or Debit">Credit or Debit</option>
+    <option value="Patreon">Patreon</option>
+</select>
+
+
+    <!-- Payment confirmation -->
+<h2 class="payment-title">Confirm Your Payment</h2>
+<p>Are you sure you want to proceed with the payment?</p>
+<form method="POST">
+    <button type="submit" name="payment_status" value="Paid" class="donate-btn">Proceed with Payment</button>
+    <button type="submit" name="payment_status" value="Pending" class="donate-btn">Pay Later</button>
+</form>
+
+</form>
+
+</div>
+    <script src="{{ url_for('static', filename='js/pay.js') }}"></script>
+    
+</body>
+</html>

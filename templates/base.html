@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <!-- Add any CSS links here -->
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+        <div class="navbar-nav ml-auto py-0">
+            <a href="{{ url_for('home') }}" class="nav-item nav-link {% if request.endpoint == 'home' %}active{% endif %}">Home</a>
+            <a href="{{ url_for('about') }}" class="nav-item nav-link {% if request.endpoint == 'about' %}active{% endif %}">About</a>
+            <a href="{{ url_for('services') }}" class="nav-item nav-link {% if request.endpoint == 'services' %}active{% endif %}">Services</a>
+            <a href="{{ url_for('package') }}" class="nav-item nav-link {% if request.endpoint == 'package' %}active{% endif %}">Tour Package</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                <div class="dropdown-menu border-0 rounded-0 m-0">
+                    <a href="{{ url_for('blog_grid') }}" class="dropdown-item {% if request.endpoint == 'blog_grid' %}active{% endif %}">Blog Grid</a>
+                    <a href="{{ url_for('blog_detail') }}" class="dropdown-item {% if request.endpoint == 'blog_detail' %}active{% endif %}">Blog Detail</a>
+                    <a href="{{ url_for('destination') }}" class="dropdown-item {% if request.endpoint == 'destination' %}active{% endif %}">Destination</a>
+                    <a href="{{ url_for('travel_guides') }}" class="dropdown-item {% if request.endpoint == 'travel_guides' %}active{% endif %}">Travel Guides</a>
+                    <a href="{{ url_for('testimonial') }}" class="dropdown-item {% if request.endpoint == 'testimonial' %}active{% endif %}">Testimonial</a>
+                </div>
+            </div>
+            <a href="{{ url_for('contact') }}" class="nav-item nav-link {% if request.endpoint == 'contact' %}active{% endif %}">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Content Block (to be replaced in each page) -->
+{% block content %}{% endblock %}
+
+<!-- Footer (optional) -->
+<footer>
+    <!-- Your footer content here -->
+</footer>
+{% endblock %}
+</body>
+</html>
