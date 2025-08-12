@@ -3,7 +3,7 @@ import mysql.connector
 import datetime
 
 app = Flask(__name__)
-app.secret_key = "#123@##"  # Required for flash messages
+app.secret_key = "secret_key"  # Required for flash messages
 
 # Database connection details
 db_config = {
