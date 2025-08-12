@@ -7,10 +7,10 @@ app.secret_key = "#123@##"  # Required for flash messages
 
 # Database connection details
 db_config = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': 'GNR@GST@1234',
-    'database': 'DBMSPRJ'
+    'host': 'localhost_name',
+    'user': 'user_name',
+    'password': 'password_of_your_uset',
+    'database': 'project_name'
 }
 
 # Helper function to establish a database connection
